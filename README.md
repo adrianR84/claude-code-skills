@@ -8,7 +8,7 @@ A collection of skills for Claude Code.
 
 1. Add the marketplace:
    ```
-   /plugin marketplace add adrianR84/claude-code-skills
+   claude plugin marketplace add adrianR84/claude-code-skills
    ```
 2. Install the plugin:
    ```
