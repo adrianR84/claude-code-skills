@@ -3,12 +3,12 @@
   "owner": {
     "name": "adrianR84"
   },
-  "description": "Collection of skills for Claude Code",
+  "description": "Collection of skills for Claude Code packed as a plugin",
   "plugins": [
     {
       "name": "claude-code-skills",
       "source": "./",
-      "description": "Collection of skills for Claude Code — profile backup/restore and marketplace plugin management",
+      "description": "Collection of skills for Claude Code packed as a plugin",
       "author": {
         "name": "adrianR84"
       },

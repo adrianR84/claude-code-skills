@@ -4,7 +4,7 @@
     "source": "git",
     "url": "https://github.com/adrianR84/claude-code-skills"
   },
-  "description": "Collection of skills for Claude Code — profile backup/restore and marketplace plugin management",
+  "description": "Collection of skills for Claude Code packed as a plugin",
   "category": "development",
   "repository": "https://github.com/adrianR84/claude-code-skills",
   "author": {
