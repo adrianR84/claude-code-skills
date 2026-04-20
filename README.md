@@ -47,19 +47,12 @@ cd claude-code-skills
 claude --plugin-dir .
 ```
 
-## Skills
+## Available Skills
 
-### `import-export-claude-global-profile`
-
-Backup, restore, and diff your Claude Code settings — local or with GitHub sync.
-
-Trigger phrases: "sync claude profile", "backup claude", "restore claude", "compare claude settings"
-
-### `add-marketplace-plugin`
-
-Add a plugin to the marketplace from a GitHub URL.
-
-Trigger phrases: "add this plugin", "add this repo to marketplace"
+| Name | Description |
+|------|-------------|
+| add-marketplace-plugin | Add a Claude Code plugin to the marketplace from a GitHub URL. Trigger when user provides a GitHub URL and asks to add it as a plugin. |
+| import-export-claude-global-profile | Export, import, or diff Claude Code global settings. Trigger on "sync claude profile", "backup claude", "restore claude from backup". |
 
 ## Requirements
 
