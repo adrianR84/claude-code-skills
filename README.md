@@ -19,26 +19,6 @@ A collection of skills for Claude Code.
    /reload-plugins
    ```
 
-### Local install
-
-1. Clone the repository:
-   ```
-   git clone https://github.com/adrianR84/claude-code-skills.git
-   cd claude-code-skills
-   ```
-2. Add the local marketplace:
-   ```
-   /plugin marketplace add .
-   ```
-3. Install the plugin:
-   ```
-   claude plugin install claude-code-skills@claude-code-skills
-   ```
-4. Reload plugins:
-   ```
-   /reload-plugins
-   ```
-
 ### Session-Only (No Install)
 
 ```
