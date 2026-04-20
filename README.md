@@ -12,7 +12,7 @@ A collection of skills for Claude Code.
    ```
 2. Install the plugin:
    ```
-   /plugin install claude-code-skills
+   /plugin install claude-code-skills@claude-code-skills
    ```
 3. Reload plugins:
    ```
@@ -32,7 +32,7 @@ A collection of skills for Claude Code.
    ```
 3. Install the plugin:
    ```
-   /plugin install claude-code-skills
+   /plugin install claude-code-skills@claude-code-skills
    ```
 4. Reload plugins:
    ```
