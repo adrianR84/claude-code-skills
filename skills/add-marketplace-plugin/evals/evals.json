@@ -1,0 +1,20 @@
+{
+  "skill_name": "add-marketplace-plugin",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add https://github.com/KenKaiii/minimal-claude to the marketplace",
+      "expected_output": "Plugin added to marketplace.json and README.md, committed and pushed to GitHub"
+    },
+    {
+      "id": 2,
+      "prompt": "Register this repo as a plugin: https://github.com/adrianR84/claude-code-telegram-notifications",
+      "expected_output": "Plugin added to marketplace.json and README.md, committed and pushed to GitHub"
+    },
+    {
+      "id": 3,
+      "prompt": "Add the telegram plugin from https://github.com/adrianR84/claude-code-telegram-notifications to my marketplace",
+      "expected_output": "Plugin added to marketplace.json and README.md, committed and pushed to GitHub"
+    }
+  ]
+}

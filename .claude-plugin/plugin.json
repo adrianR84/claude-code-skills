@@ -1,0 +1,14 @@
+{
+  "name": "claude-code-skills",
+  "source": {
+    "source": "git",
+    "url": "https://github.com/adrianR84/claude-code-skills"
+  },
+  "description": "Collection of skills for Claude Code — profile backup/restore and marketplace plugin management",
+  "category": "development",
+  "repository": "https://github.com/adrianR84/claude-code-skills",
+  "author": {
+    "name": "adrianR84"
+  },
+  "license": "MIT"
+}
