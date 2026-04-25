@@ -9,6 +9,12 @@ This skill adds one or more Claude Code plugins to the marketplace from a GitHub
 
 ## Workflow
 
+### Step 0: Check for Commit Intent
+
+At the start, check if the user explicitly asked for a commit/push from the beginning of their request. Phrases like "add and commit", "add this plugin and push", "/add-marketplace-plugin --commit", "please add it and commit" indicate the user wants to commit without being asked.
+
+If the user specified commit intent upfront, plan to commit after making changes without asking. If not specified, proceed through the workflow and ask in Step 8.
+
 ### Step 1: Parse the GitHub URL
 
 From the user's input, extract the base GitHub repository in format `owner/repo`.
@@ -35,9 +41,12 @@ Before treating the URL as a direct plugin, check if the repo exposes a `marketp
 Parse its `plugins` array. Each entry may have a `source` that is:
 - An absolute URL: `https://github.com/someone/some-plugin` — use `source: "url"` with that URL
 - A relative path: `./my-plugin` or `my-plugin` — this means the plugin lives in a subdirectory of the repo. Resolve to base repo URL + path, but use `source: "git-subdir"` with the base repo URL and the path as the `path` field.
+  - Exception: If the relative path is `"./"` (the repo root itself), use `source: "url"` instead, pointing to the base repo URL.
+- An absolute URL: `https://github.com/someone/some-plugin` — use `source: "url"` with that URL.
 
 Example resolution:
 - Base: `https://github.com/someuser/collection`
+- Relative `"./"` → `source: "url"` with `url: "https://github.com/someuser/collection"`
 - Relative: `./plugin-a` → `source: "git-subdir"` with `url: "https://github.com/someuser/collection"` and `path: "plugin-a"`
 - Relative: `./packages/tool` → `source: "git-subdir"` with `url: "https://github.com/someuser/collection"` and `path: "packages/tool"`
 
@@ -128,7 +137,7 @@ Use `Edit` to insert entries before the closing `]` of the plugins array. Preser
 
 ### Step 7: Update README.md
 
-Read `README.md`, then for each plugin, add a new section in alphabetical order within its category. Use this format:
+Read `README.md`, then for each plugin, add a new section at the end of its category. Use this format:
 
 ```markdown
 ### {Plugin Name}
@@ -146,17 +155,17 @@ Read `README.md`, then for each plugin, add a new section in alphabetical order 
   ```
 ```
 
-Insert in alphabetical order within the category section. Place before `## 🔧 Usage`.
+Insert at the end of the category section, before `## 🔧 Usage`.
 
-### Step 8: Ask Before Committing
+### Step 8: Ask or Confirm Before Committing
 
 Show the user a summary of the changes:
 - Which plugins were added to `marketplace.json`
 - That `README.md` was updated
 
-Then ask: "Shall I commit and push these changes?"
+**If the user specified commit intent in Step 0**, skip this step and proceed directly to Step 9.
 
-Only proceed if the user confirms.
+**Otherwise**, ask: "Shall I commit and push these changes?" Only proceed if the user confirms.
 
 ### Step 9: Commit and Push (only after user confirms)
 
@@ -181,7 +190,7 @@ Tell the user the plugin(s) were added successfully and provide the installation
 ## Edge Cases
 
 - **Multiple plugins from marketplace.json**: Add all confirmed plugins in one commit with a collective message like `"Add 3 plugins from {owner}/{repo} to marketplace"`.
-- **Relative path in marketplace.json**: Plugins defined with a relative path like `./my-plugin` use `git-subdir` source type with the base repo URL and the relative path as the `path` field. Never use a GitHub tree URL.
+- **Relative path in marketplace.json**: Plugins defined with a relative path like `./my-plugin` use `git-subdir` source type with the base repo URL and the relative path as the `path` field. However, if the relative path is `"./"`, the plugin IS the repo root, so use `source: "url"` with the base repo URL instead. Never use a GitHub tree URL.
 - **marketplace.json fetch fails with 404**: The repo doesn't have one — treat as a direct plugin and continue normally.
 - **Plugin already exists**: Skip it, note it was already present, and don't update the existing entry.
 - **Subdirectory plugins use `git-subdir`**: When a plugin is inside a subdirectory of the source repo, always use `source: "git-subdir"` with the base repo URL and the subdirectory path, not a tree URL.
