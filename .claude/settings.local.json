@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Read(//c/Users/adria/.claude/skills/**)",
-      "Read(//c/Users/adria/.agents/skills/**)",
-      "Bash(xargs -r readlink -f)"
-    ]
-  }
-}
