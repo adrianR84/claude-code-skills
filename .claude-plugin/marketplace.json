@@ -15,7 +15,8 @@
       "category": "development",
       "repository": "https://github.com/adrianR84/claude-code-skills",
       "keywords": ["skills", "backup", "sync", "marketplace"],
-      "license": "MIT"
+      "license": "MIT",
+	  "version": "1.0.1"
     }
   ]
 }

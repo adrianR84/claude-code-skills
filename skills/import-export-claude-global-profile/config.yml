@@ -7,7 +7,7 @@
 backup_folder: ~/.claude-profile
 
 # GitHub remote — leave empty to disable remote sync (local-only mode)
-github_repo: 
+github_repo: https://github.com/adrianR84/my-claude-profile
 
 # ─── What to sync ──────────────────────────────────────────────────────────────
 

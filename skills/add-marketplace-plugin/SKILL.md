@@ -73,6 +73,7 @@ Extract:
 - **author**: The GitHub owner/organization name
 - **topics/keywords**: From repo topics if available
 - **license**: If visible on the repo page
+- **version**: Check the repo's marketplace.json (either `/.claude-plugin/marketplace.json` or `/marketplace.json`) or README for a version field. Include version if found, omit if not available. Do not invent a version number.
 
 ### Step 4: Determine Category
 
@@ -107,7 +108,8 @@ For each new plugin, add an entry to the `plugins` array in `.claude-plugin/mark
   "author": {
     "name": "{author}"
   },
-  "license": "{MIT or as-found}"
+  "license": "{MIT or as-found}",
+  "version": "{version or omit if not available}"
 }
 ```
 
@@ -127,7 +129,8 @@ For each new plugin, add an entry to the `plugins` array in `.claude-plugin/mark
   "author": {
     "name": "{author}"
   },
-  "license": "{MIT or as-found}"
+  "license": "{MIT or as-found}",
+  "version": "{version or omit if not available}"
 }
 ```
 
@@ -149,13 +152,22 @@ Read `README.md`, then for each plugin, add a new section at the end of its cate
 - **Repository**: <a href="https://github.com/{owner}/{repo}" target="_blank">{owner}/{repo}</a>
 - **Keywords**: {keywords}
 - **License**: {license}
+- **Version**: {version or omit if not available}
 - **Installation**:
   ```bash
   /plugin install {plugin-name}@claude-code-awesome
   ```
+
+[← Back to Available Plugins](#-available-plugins)
+
+Add the plugin to the table at the top of `## 🚀 Available Plugins` section, after the last entry. Insert a new row:
+```
+| [{plugin-name}](#{plugin-name}) | {author} | {short-description} |
+```
+The short-description should be a brief (under 80 characters) version of the full description, suitable for the table.
 ```
 
-Insert at the end of the category section, before `## 🔧 Usage`.
+Insert the section at the end of the appropriate category section (before `## 🔧 Usage`), and also add a row to the plugin table at the top of `## 🚀 Available Plugins`.
 
 ### Step 8: Ask or Confirm Before Committing
 
@@ -194,3 +206,4 @@ Tell the user the plugin(s) were added successfully and provide the installation
 - **marketplace.json fetch fails with 404**: The repo doesn't have one — treat as a direct plugin and continue normally.
 - **Plugin already exists**: Skip it, note it was already present, and don't update the existing entry.
 - **Subdirectory plugins use `git-subdir`**: When a plugin is inside a subdirectory of the source repo, always use `source: "git-subdir"` with the base repo URL and the subdirectory path, not a tree URL.
+- **Version not found**: If a plugin has no declared version in its manifest or README, omit the `version` field from the marketplace.json entry. Do not guess or default to "1.0.0".
